@@ -1,0 +1,96 @@
+#include <iostream>
+using namespace std;
+
+class Footballer {
+private:
+    string last_name;
+    string team;
+    float height;
+    float weight;
+public:
+    Footballer(string = "Tast_name", string = "Team", float = 0.0, float = 0.0);
+    void Set_last_name(string last_name)
+    {
+        this->last_name = last_name;
+    }
+
+    void Set_Team(string team)
+    {
+        this->team = team;
+    }
+
+    void setrost(float height)
+    {
+
+        this->height = height;
+    }
+
+    void setweight(float weight)
+    {
+        this->weight = weight;
+    }
+
+    void print()
+    {
+        cout << "\nFootballer: \n" << "Last Name: " << last_name << " \nHeight: " << height << " \nWeight: " << weight << " \nTeam: " << team;
+    }
+    string Get_last_name()
+    {
+        return last_name;
+    }
+    string Get_team()
+    {
+        return team;
+    }
+    float Get_height()
+    {
+        return height;
+    }
+    float Get_weight()
+    {
+        return weight;
+    }
+    ~Footballer() {};
+    
+};
+class Attacking : public Footballer {
+private:
+    int mastery;
+    int gol;
+public:
+    Attacking(unsigned short = 0, int = 0, string = "Last_name", string = "Team", float = 0, float = 0);
+    void print()
+    {
+        cout << "\nAttacking: \n" << "Last Name: " << Get_last_name << " \nHeight: " << Get_height << " \nWeight: " << Get_weight << " \nTeam: " << Get_team<<"\nMastery: "<< mastery<<"\nGol: "<<gol;
+    }
+    void setgol() 
+    {
+        gol++;
+    }
+    ~Attacking() {};
+};
+class Quarterback : public Footballer {
+private:
+    int matches;
+    int victory;
+public:
+    Quarterback(int = 0, int = 0, string= "Last_name", string = "Team ", float = 0, float = 0);
+    void setmatches()const;
+    void setvictory()const;
+    ~Quarterback() {};
+};
+
+Footballer::Footballer(string last_name, string team, float height, float weight) :
+    last_name(last_name), team(team), height(height), weight(weight) {}
+ 
+int main()
+{
+   
+    Attacking player;
+    player.Set_last_name("Ivanov");
+    player.Set_Team("Dream");
+    player.setrost(179.2);
+    player.setweight(73.5);
+    player.print();
+}
+
