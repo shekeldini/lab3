@@ -32,7 +32,11 @@ public:
 
     virtual void print()
     {
-        cout << "\nFootballer: \n" << "Last Name: " << last_name << " \nHeight: " << height << " \nWeight: " << weight << " \nTeam: " << team;
+        cout << "\nFootballer: \n" 
+            << "Last Name: " << last_name 
+            << " \nHeight: " << height 
+            << " \nWeight: " << weight 
+            << " \nTeam: " << team;
     }
     string Get_last_name()
     {
@@ -143,7 +147,7 @@ int main()
     Attacking player;
     player.Set_last_name("Ivanov");
     player.Set_Team("Dream");
-    player.Set_height(179.5);
+    player.Set_height(175.2);
     player.Set_weight(73.5);
     player.Set_mastery(5);
     player.Set_gol(10);
@@ -163,3 +167,4 @@ int main()
     player1.Add_victory(1);
     player1.print();
 }
+
