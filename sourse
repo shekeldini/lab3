@@ -54,7 +54,11 @@ public:
     {
         return weight;
     }
-    ~Footballer() {};
+    ~Footballer() 
+    {
+        last_name.clear();
+        team.clear();
+    };
     
 };
 class Attacking : public Footballer {
