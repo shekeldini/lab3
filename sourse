@@ -8,7 +8,7 @@ private:
     float height;
     float weight;
 public:
-    Footballer(string = "Tast_name", string = "Team", float = 0.0, float = 0.0);
+    Footballer(string = "Last_name", string = "Team", float = 0.0, float = 0.0);
     void Set_last_name(string last_name)
     {
         this->last_name = last_name;
