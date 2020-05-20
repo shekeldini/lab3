@@ -30,7 +30,7 @@ public:
         this->weight = weight;
     }
 
-    void print()
+    virtual void print()
     {
         cout << "\nFootballer: \n" << "Last Name: " << last_name << " \nHeight: " << height << " \nWeight: " << weight << " \nTeam: " << team;
     }
@@ -59,7 +59,7 @@ private:
     int gol;
 public:
     Attacking(unsigned short = 0, int = 0, string = "Last_name", string = "Team", float = 0, float = 0);
-    void print()
+    void print() override
     {
         cout << "\nAttacking: \n" << "Last Name: " << Get_last_name << " \nHeight: " << Get_height << " \nWeight: " << Get_weight << " \nTeam: " << Get_team<<"\nMastery: "<< mastery<<"\nGol: "<<gol;
     }
