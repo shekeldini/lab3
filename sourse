@@ -9,15 +9,7 @@ private:
     float weight;
 public:
     Footballer(string = "Last_name", string = "Team", float = 0.0, float = 0.0);
-    void Set_last_name(string last_name)
-    {
-        this->last_name = last_name;
-    }
-
-    void Set_Team(string team)
-    {
-        this->team = team;
-    }
+    
 
     void Set_height(float height)
     {
@@ -53,6 +45,17 @@ public:
     float Get_weight()
     {
         return weight;
+    }
+    Footballer& operator= (const Footballer& other)
+    {
+        if (this != &other)
+        {
+            last_name = other.last_name;
+            team = other.team;
+            weight = other.weight;
+            height = other.height;
+        }
+        return *this;
     }
     ~Footballer() 
     {
@@ -148,9 +151,8 @@ Quarterback::Quarterback(string last_name, string team, float height, float weig
 int main()
 {
    
-    Attacking player;
-    player.Set_last_name("Ivanov");
-    player.Set_Team("Dream");
+    Attacking player ("Ivanov", "Dream");
+    
     player.Set_height(175.2);
     player.Set_weight(73.5);
     player.Set_mastery(5);
@@ -159,10 +161,10 @@ int main()
     transform(player,10);
     player.print();
 
+
     
-    Quarterback player1;
-    player1.Set_last_name("Isayan");
-    player1.Set_Team("Dream");
+    Quarterback player1("Isayan", "Dream");
+    
     player1.Set_height(179);
     player1.Set_weight(70);
     player1.Set_matches(10);
