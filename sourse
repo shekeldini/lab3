@@ -59,9 +59,17 @@ private:
     int gol;
 public:
     Attacking(string = "Last_name", string = "Team", float = 0.0, float = 0.0, unsigned short = 0, int = 0);
+    friend void transform(Attacking& a, int mastery);
+    friend void transform1(Attacking& a);
     void print() override
     {
-        cout << "\nAttacking: \n" << "Last Name: " << Get_last_name() << " \nHeight: " << Get_height() << " \nWeight: " << Get_weight() << " \nTeam: " << Get_team()<<"\nMastery: "<< mastery<<"\nGol: "<<gol << endl;
+        cout << "\nAttacking: \n" 
+            << "Last Name: " << Get_last_name() 
+            << " \nHeight: " << Get_height() 
+            << " \nWeight: " << Get_weight() 
+            << " \nTeam: " << Get_team()
+            <<"\nMastery: "<< mastery
+            <<"\nGol: "<<gol << endl;
     }
     void Set_gol(int gol)
     {
@@ -77,6 +85,16 @@ public:
     }
     ~Attacking() {};
 };
+void transform(Attacking & a,int mastery)
+{
+    a.mastery = mastery;  
+}
+void transform1(Attacking& a)
+{
+    cout << endl << "enter mastery";
+    cin >> a.mastery;
+}
+
 class Quarterback : public Footballer {
 private:
     int matches;
@@ -101,7 +119,13 @@ public:
     }
     void print() override
     {
-        cout << "\nQuarterback: \n" << "Last Name: " << Get_last_name() << " \nHeight: " << Get_height() << " \nWeight: " << Get_weight() << " \nTeam: " << Get_team() << "\nMatches: " << matches << "\nVictory: " << victory<<endl;
+        cout << "\nQuarterback: \n" 
+            << "Last Name: " << Get_last_name() 
+            << " \nHeight: " << Get_height() 
+            << " \nWeight: " << Get_weight() 
+            << " \nTeam: " << Get_team() 
+            << "\nMatches: " << matches 
+            << "\nVictory: " << victory<<endl;
     }
     ~Quarterback() {};
 };
@@ -124,7 +148,9 @@ int main()
     player.Set_mastery(5);
     player.Set_gol(10);
     player.Add_gol();
+    transform(player,10);
     player.print();
+
     
     Quarterback player1;
     player1.Set_last_name("Isayan");
@@ -137,4 +163,3 @@ int main()
     player1.Add_victory(1);
     player1.print();
 }
-
