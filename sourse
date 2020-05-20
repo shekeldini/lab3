@@ -19,13 +19,13 @@ public:
         this->team = team;
     }
 
-    void setrost(float height)
+    void Set_height(float height)
     {
 
         this->height = height;
     }
 
-    void setweight(float weight)
+    void Set_weight(float weight)
     {
         this->weight = weight;
     }
@@ -55,15 +55,23 @@ public:
 };
 class Attacking : public Footballer {
 private:
-    int mastery;
+    unsigned short mastery;
     int gol;
 public:
-    Attacking(unsigned short = 0, int = 0, string = "Last_name", string = "Team", float = 0, float = 0);
+    Attacking(string = "Last_name", string = "Team", float = 0.0, float = 0.0, unsigned short = 0, int = 0);
     void print() override
     {
-        cout << "\nAttacking: \n" << "Last Name: " << Get_last_name << " \nHeight: " << Get_height << " \nWeight: " << Get_weight << " \nTeam: " << Get_team<<"\nMastery: "<< mastery<<"\nGol: "<<gol;
+        cout << "\nAttacking: \n" << "Last Name: " << Get_last_name() << " \nHeight: " << Get_height() << " \nWeight: " << Get_weight() << " \nTeam: " << Get_team()<<"\nMastery: "<< mastery<<"\nGol: "<<gol << endl;
     }
-    void setgol() 
+    void Set_gol(int gol)
+    {
+        this->gol = gol;
+    }
+    void Set_mastery(unsigned short mastery)
+    {
+        this->mastery = mastery;
+    }
+    void Add_gol()
     {
         gol++;
     }
@@ -74,23 +82,59 @@ private:
     int matches;
     int victory;
 public:
-    Quarterback(int = 0, int = 0, string= "Last_name", string = "Team ", float = 0, float = 0);
-    void setmatches()const;
-    void setvictory()const;
+    Quarterback(string= "Last_name", string = "Team ", float = 0, float = 0, int = 0, int = 0);
+    void Set_matches(int matches)
+    {
+        this->matches = matches;
+    }
+    void Set_victory(int victory)
+    {
+        this->victory = victory;
+    }
+    void Add_matches(int matches)
+    {
+        this->matches += matches;
+    }
+    void Add_victory(int victory)
+    {
+        this->victory += victory;
+    }
+    void print() override
+    {
+        cout << "\nQuarterback: \n" << "Last Name: " << Get_last_name() << " \nHeight: " << Get_height() << " \nWeight: " << Get_weight() << " \nTeam: " << Get_team() << "\nMatches: " << matches << "\nVictory: " << victory<<endl;
+    }
     ~Quarterback() {};
 };
-
 Footballer::Footballer(string last_name, string team, float height, float weight) :
     last_name(last_name), team(team), height(height), weight(weight) {}
- 
+Attacking::Attacking(string last_name, string team, float height, float weight, unsigned short mastery, int gol) :
+    Footballer(last_name, team, height, weight), mastery(mastery), gol(gol){}
+Quarterback::Quarterback(string last_name, string team, float height, float weight, int matches, int victory) :
+    Footballer(last_name, team, height, weight), matches(matches), victory(victory) {}
+
+
 int main()
 {
    
     Attacking player;
     player.Set_last_name("Ivanov");
     player.Set_Team("Dream");
-    player.setrost(179.2);
-    player.setweight(73.5);
+    player.Set_height(179.5);
+    player.Set_weight(73.5);
+    player.Set_mastery(5);
+    player.Set_gol(10);
+    player.Add_gol();
     player.print();
+    
+    Quarterback player1;
+    player1.Set_last_name("Isayan");
+    player1.Set_Team("Dream");
+    player1.Set_height(179);
+    player1.Set_weight(70);
+    player1.Set_matches(10);
+    player1.Set_victory(10);
+    player1.Add_matches(2);
+    player1.Add_victory(1);
+    player1.print();
 }
 
