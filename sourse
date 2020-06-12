@@ -46,7 +46,12 @@ public:
     {
         return weight;
     }
-    Footballer& operator= (const Footballer& other)
+
+    Footballer(const Footballer& other) : last_name(other.last_name), team(other.team), height(other.height), weight(other.weight) {}
+    
+    
+
+    Footballer& operator= (Footballer& other)
     {
         if (this != &other)
         {
@@ -70,8 +75,8 @@ private:
     int gol;
 public:
     Attacking(string = "Last_name", string = "Team", float = 0.0, float = 0.0, unsigned short = 0, int = 0);
-    friend void transform(Attacking& a, int mastery);
-    friend void transform1(Attacking& a);
+    friend void change_mastery(Attacking& a, int mastery);
+    friend void change_mastery1(Attacking& a);
     void print() override
     {
         cout << "\nAttacking: \n" 
@@ -82,6 +87,20 @@ public:
             <<"\nMastery: "<< mastery
             <<"\nGol: "<<gol << endl;
     }
+    Attacking(const Attacking& other) :Footballer(other),mastery(other.mastery),gol(other.gol) {}
+
+
+    Attacking& operator= (Attacking& other)
+    {
+        if (this != &other)
+        {
+            Footballer::operator=(other);
+            mastery = other.mastery;
+            gol = other.gol;
+        }
+        return *this;
+    }
+
     void Set_gol(int gol)
     {
         this->gol = gol;
@@ -96,15 +115,11 @@ public:
     }
     ~Attacking() {};
 };
-void transform(Attacking & a,int mastery)
+void change_mastery(Attacking & a,int mastery)
 {
     a.mastery = mastery;  
 }
-void transform1(Attacking& a)
-{
-    cout << endl << "enter mastery";
-    cin >> a.mastery;
-}
+
 
 class Quarterback : public Footballer {
 private:
@@ -112,6 +127,20 @@ private:
     int victory;
 public:
     Quarterback(string= "Last_name", string = "Team ", float = 0, float = 0, int = 0, int = 0);
+
+    Quarterback(const Quarterback& other) :Footballer(other), matches(other.matches), victory(other.victory) {}
+
+    Quarterback& operator= (Quarterback& other)
+    {
+        if (this != &other)
+        {
+        Footballer::operator=(other);
+        matches = other.matches;
+        victory = other.victory;
+        }
+        return *this;
+    }
+
     void Set_matches(int matches)
     {
         this->matches = matches;
@@ -142,8 +171,10 @@ public:
 };
 Footballer::Footballer(string last_name, string team, float height, float weight) :
     last_name(last_name), team(team), height(height), weight(weight) {}
+
 Attacking::Attacking(string last_name, string team, float height, float weight, unsigned short mastery, int gol) :
     Footballer(last_name, team, height, weight), mastery(mastery), gol(gol){}
+
 Quarterback::Quarterback(string last_name, string team, float height, float weight, int matches, int victory) :
     Footballer(last_name, team, height, weight), matches(matches), victory(victory) {}
 
@@ -158,10 +189,10 @@ int main()
     player.Set_mastery(5);
     player.Set_gol(10);
     player.Add_gol();
-    transform(player,10);
+    change_mastery(player,10);
     player.print();
 
-
+    
     
     Quarterback player1("Isayan", "Dream");
     
@@ -172,5 +203,8 @@ int main()
     player1.Add_matches(2);
     player1.Add_victory(1);
     player1.print();
+
+    Quarterback player2 = player1;
+    player2.print();
 }
 
