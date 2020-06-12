@@ -76,7 +76,7 @@ private:
 public:
     Attacking(string = "Last_name", string = "Team", float = 0.0, float = 0.0, unsigned short = 0, int = 0);
     friend void change_mastery(Attacking& a, int mastery);
-    friend void change_mastery1(Attacking& a);
+    
     void print() override
     {
         cout << "\nAttacking: \n" 
